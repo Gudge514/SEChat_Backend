@@ -22,7 +22,7 @@ from langchain.chains import LLMChain
 # accessible model
 def openaiModel():
     model = ChatOpenAI(model = "gpt-3.5-turbo")
-    model.openai_api_key = "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"
+    model.openai_api_key = ""
     model.openai_api_base = "https://api.openai.com/v1"
     return model
 
@@ -46,7 +46,7 @@ def glmModel():
 
 def openaiEmbedding():
     model = OpenAIEmbeddings()
-    model.openai_api_key = "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"
+    model.openai_api_key = ""
     model.openai_api_base = "https://api.openai.com/v1"
     return model
 
