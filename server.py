@@ -28,9 +28,6 @@ app.add_middleware(
 from routers import use_case_router
 app.include_router(use_case_router, prefix=API_PREFIX)
 
-from routers import chat_router
-app.include_router(chat_router, prefix=API_PREFIX)
-
 
 # 服务器根应答
 @app.get("/")

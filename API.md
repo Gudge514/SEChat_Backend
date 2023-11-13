@@ -44,32 +44,6 @@ GET /v1/model
 
 
 
-# -- 聊天 --
-
-/v1/chat
-
-## - 获取聊天回复
-
-### 请求API
-
-POST /v1/chat/completion
-
-### 参数
-
-| Name | In | Type | Desc |
-| --- | --- | --- | ---|
-| message | Body | list | 提示词文本列表 |
-| model | Body | string | 模型 |
-| temperature | Body | float | 多样性参数1 |
-| top_p | Body | float | 多样性参数2 |
-| stream | Body | boolean | 是否流输出 |
-
-### 应答
-
-todo: 
-
-
-
 # 测试用例
 
 ## 生成
