@@ -6,8 +6,8 @@ from langchain.prompts import ChatPromptTemplate
 
 def makeChain(retriever):
     
-    from internal.model import glmModel
-    model = glmModel()
+    from internal.model import getModelByName
+    model = getModelByName(name="chatglm3-6b")
     
     template = """
     你是某软件项目的测试人员，需要根据需求规格说明文档的内容编写测试用例。接下来我会给出相关的需求规格文档，而你将根据其写出对应的测试用例。

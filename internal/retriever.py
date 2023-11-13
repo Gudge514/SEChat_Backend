@@ -5,11 +5,15 @@ from langchain.vectorstores import Chroma
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 
+# 日志
+import logging
+logger = logging.getLogger(__name__)
+
 def makeRetriever(requirements_json):
     
     # 选择嵌入模型
-    from internal.model import m3eEmbedding
-    embeddings = m3eEmbedding()
+    from internal.model import getEmbeddingByName
+    embeddings = getEmbeddingByName(name="m3e-large")
     
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     texts = []
@@ -30,5 +34,5 @@ def makeRetriever(requirements_json):
     db = Chroma.from_documents(docs, embeddings)
 
     retriever = db.as_retriever()
-    print("嵌入已完成")
+    logger.info("嵌入已完成")
     return retriever

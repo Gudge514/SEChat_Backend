@@ -20,9 +20,8 @@ use_case_router = APIRouter(prefix='/useCase')
 
 @use_case_router.post("")
 async def processText(long_text: ChatRequest):
-    global chain
     
-    # 文本模版
+    global chain
     
     # 解析器
     from utils.parser import parseJson
@@ -39,6 +38,7 @@ async def processText(long_text: ChatRequest):
 
 @use_case_router.post("/retriever")
 async def uploadRetriver(file: UploadFile = File(...)):
+    
     global chain
     
     # 加载器
