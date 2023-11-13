@@ -2,15 +2,14 @@
 from langchain.vectorstores import Chroma
 
 # 嵌入模型生成
-from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 
 def makeRetriever(requirements_json):
     
     # 选择嵌入模型
-    from internal.model import openaiEmbedding
-    embeddings = openaiEmbedding()
+    from internal.model import m3eEmbedding
+    embeddings = m3eEmbedding()
     
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     texts = []

@@ -14,16 +14,14 @@ def llamaModel():
     model.openai_api_base = "http://10.58.0.2:8000/v1"
     return model
 
-def turboModel():
-    model = ChatOpenAI(model = "gpt-3.5-turbo")
+def baichuanModel():
+    model = ChatOpenAI(model = "baichuan2-13b-chat")
     model.openai_api_key = "EMPTY"
     model.openai_api_base = "http://10.58.0.2:6677/v1"
     return model
 
 def glmModel():
-    model = ChatOpenAI(model = "gpt-3.5-turbo")
-    model.openai_api_key = "EMPTY"
-    model.openai_api_base = "http://10.58.0.2:7681/v1"
+    model = ChatOpenAI(model = "chatglm3-6b", openai_api_key="xxx", openai_api_base="http://10.58.0.2:6678/v1")
     return model
 
 def openaiEmbedding():
@@ -31,3 +29,13 @@ def openaiEmbedding():
     model.openai_api_key = ""
     model.openai_api_base = "https://api.openai.com/v1"
     return model
+
+def m3eEmbedding():
+    model = OpenAIEmbeddings(openai_api_key="xxx", openai_api_base="http://10.58.0.2:6678/v1")
+    return model
+
+
+# 允许工具利用模型名字这一参数自动获取模型对象
+def getModelByName(name: str):
+    
+    pass

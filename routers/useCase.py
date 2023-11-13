@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 use_case_router = APIRouter(prefix='/useCase')
 
-@use_case_router.post("/")
+@use_case_router.post("")
 async def processText(long_text: ChatRequest):
     
     # 文本模版

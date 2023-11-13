@@ -6,8 +6,8 @@ from langchain.prompts import ChatPromptTemplate
 
 def makeChain(retriever):
     
-    from internal.model import openaiModel
-    model = openaiModel()
+    from internal.model import glmModel
+    model = glmModel()
     
     template = """
     你是某软件项目的测试人员，需要根据需求规格说明文档的内容编写测试用例。接下来我会给出相关的需求规格文档，而你将根据其写出对应的测试用例。
@@ -27,6 +27,7 @@ def makeChain(retriever):
             | StrOutputParser()
         )
         return chain
+    
     chain = (
         {"context": retriever | _format_docs, "question": RunnablePassthrough()}
         | prompt
