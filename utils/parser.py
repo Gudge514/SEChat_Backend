@@ -73,6 +73,7 @@ def parseJson(answer):
             left = right+1
             while(left<len(answer) and answer[left]!="{"):
                 left+=1
+            right = left
             cnt = 1
     if len(output)==1:
         return output[0]

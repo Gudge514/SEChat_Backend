@@ -13,19 +13,19 @@ from uuid import uuid4
 import logging
 logger = logging.getLogger(__name__)
 
+from internal.template import makeChain
+chain = makeChain(None)
 
 use_case_router = APIRouter(prefix='/useCase')
 
 @use_case_router.post("/")
 async def processText(long_text: ChatRequest):
+    global chain
     
     # 文本模版
-    from internal.template import makeChain
     
     # 解析器
     from utils.parser import parseJson
-    
-    chain = makeChain(None)
     
     # 处理传递的长文本数据
     message = long_text.message
@@ -39,6 +39,7 @@ async def processText(long_text: ChatRequest):
 
 @use_case_router.post("/retriever")
 async def uploadRetriver(file: UploadFile = File(...)):
+    global chain
     
     # 加载器
     from utils.loader import loadMD
@@ -59,6 +60,7 @@ async def uploadRetriver(file: UploadFile = File(...)):
         file_extension = file.filename.split(".")[-1]
         new_filename = f"{timestamp}_{unique_id}.{file_extension}"
         file_path = os.path.join("upload_folder", new_filename)
+        print(file_path)
         
         with open(file_path, "wb") as file_object:
             file_object.write(file.file.read())
